@@ -1,0 +1,9 @@
+[project]
+name = "buddy-standalone"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["fastapi", "uvicorn[standard]", "sqlalchemy>=2", "psycopg[binary]", "pypdf", "PyJWT", "cryptography", "requests", "argon2-cffi", "python-multipart"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,16 @@
+**/node_modules
+**/.venv
+**/__pycache__
+backend/data
+backend/.test-data
+backend/static
+backend/tests
+.env
+.git
+odoo-addons
+.env.*
+!.env.example
+.claude
+backend/.dev-data
+frontend/dist
+*.log

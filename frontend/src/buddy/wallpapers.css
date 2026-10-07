@@ -1,0 +1,47 @@
+/* Chat wallpapers. Container: <div class="wp" data-wp="corazones"> with <Wallpaper/> inside.
+   --wp-bg = base color, `color` = drawing tint (decorative, very low contrast). */
+.wp {
+  position: relative;
+  --wp-bg: transparent;
+  background-color: var(--wp-bg);
+}
+.wp > .wp-svg { color: inherit; }
+
+.wp[data-wp="liso"] { --wp-bg: var(--paper-2, #e8edea); }
+.wp[data-wp="corazones"] { --wp-bg: #fde7ee; color: #f5c4d3; }
+.wp[data-wp="estrellas"] { --wp-bg: #ece8fb; color: #d2caf3; }
+.wp[data-wp="nubes"] { --wp-bg: #e3f0fb; color: #c3dff3; }
+.wp[data-wp="flores"] { --wp-bg: #fdf6d9; color: #f1e0a0; }
+.wp[data-wp="patitas"] { --wp-bg: #f4ebe0; color: #e2cfb8; }
+.wp[data-wp="sakura"] { --wp-bg: #fff0f3; color: #f6cfdb; }
+.wp[data-wp="lunas"] { --wp-bg: #e2e8f6; color: #bcc7e8; }
+.wp[data-wp="ondas"] { --wp-bg: #def2ee; color: #b9dfd8; }
+.wp[data-wp="puntitos"] { --wp-bg: #e5f4e6; color: #c2e0c4; }
+.wp[data-wp="garabatos"] { --wp-bg: #fbf3e2; color: #ead9b4; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .wp[data-wp="liso"] { --wp-bg: var(--paper-2, #171f2a); }
+  :root:not([data-theme="light"]) .wp[data-wp="corazones"] { --wp-bg: #26181e; color: #43303a; }
+  :root:not([data-theme="light"]) .wp[data-wp="estrellas"] { --wp-bg: #1c1a2e; color: #34315a; }
+  :root:not([data-theme="light"]) .wp[data-wp="nubes"] { --wp-bg: #151f2b; color: #283d54; }
+  :root:not([data-theme="light"]) .wp[data-wp="flores"] { --wp-bg: #25221a; color: #433e27; }
+  :root:not([data-theme="light"]) .wp[data-wp="patitas"] { --wp-bg: #231e19; color: #40362c; }
+  :root:not([data-theme="light"]) .wp[data-wp="sakura"] { --wp-bg: #261a20; color: #45303a; }
+  :root:not([data-theme="light"]) .wp[data-wp="lunas"] { --wp-bg: #0e1426; color: #25305a; }
+  :root:not([data-theme="light"]) .wp[data-wp="ondas"] { --wp-bg: #12241f; color: #23433b; }
+  :root:not([data-theme="light"]) .wp[data-wp="puntitos"] { --wp-bg: #16231a; color: #294530; }
+  :root:not([data-theme="light"]) .wp[data-wp="garabatos"] { --wp-bg: #222018; color: #433e2d; }
+}
+
+/* Explicit dark toggle */
+:root[data-theme="dark"] .wp[data-wp="liso"] { --wp-bg: var(--paper-2, #171f2a); }
+:root[data-theme="dark"] .wp[data-wp="corazones"] { --wp-bg: #26181e; color: #43303a; }
+:root[data-theme="dark"] .wp[data-wp="estrellas"] { --wp-bg: #1c1a2e; color: #34315a; }
+:root[data-theme="dark"] .wp[data-wp="nubes"] { --wp-bg: #151f2b; color: #283d54; }
+:root[data-theme="dark"] .wp[data-wp="flores"] { --wp-bg: #25221a; color: #433e27; }
+:root[data-theme="dark"] .wp[data-wp="patitas"] { --wp-bg: #231e19; color: #40362c; }
+:root[data-theme="dark"] .wp[data-wp="sakura"] { --wp-bg: #261a20; color: #45303a; }
+:root[data-theme="dark"] .wp[data-wp="lunas"] { --wp-bg: #0e1426; color: #25305a; }
+:root[data-theme="dark"] .wp[data-wp="ondas"] { --wp-bg: #12241f; color: #23433b; }
+:root[data-theme="dark"] .wp[data-wp="puntitos"] { --wp-bg: #16231a; color: #294530; }
+:root[data-theme="dark"] .wp[data-wp="garabatos"] { --wp-bg: #222018; color: #433e2d; }

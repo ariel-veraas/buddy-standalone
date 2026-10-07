@@ -1,0 +1,73 @@
+﻿/* Game surfaces share the existing light and dark palette. */
+:root { --gba-font: "Pixelify Sans", var(--sans); --gba-border: var(--ink); }
+.gba-dialog { display: block; position: relative; width: 100%; min-height: 5rem; padding: 1rem 2.1rem 1rem 1rem; border: 3px solid var(--gba-border); border-radius: 0; background: var(--sheet); color: var(--ink); font: 1.15rem/1.5 var(--gba-font); text-align: left; cursor: pointer; clip-path: polygon(2px 0,calc(100% - 2px) 0,calc(100% - 2px) 2px,100% 2px,100% calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,2px calc(100% - 2px),0 calc(100% - 2px),0 2px,2px 2px); }
+.gba-dialog:hover { background: var(--paper-2); }
+.gba-dialog:focus-visible { outline: none; border-color: var(--action); box-shadow: inset 0 0 0 2px var(--action); }
+.gba-next { position: absolute; right: .75rem; bottom: .7rem; animation: gba-blink 1s steps(2,end) infinite; }
+.gba-xp { display: grid; gap: .4rem; min-width: 0; }
+.gba-xp-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .6rem; color: var(--ink); }
+.gba-xp-label strong { color: var(--action); }
+.gba-xp-label small { font-size: .75rem; font-variant-numeric: tabular-nums; }
+.gba-xp-track { height: .75rem; border: 2px solid var(--ink); background: var(--paper-2); overflow: hidden; }
+.gba-xp-track i { display: block; height: 100%; background: repeating-linear-gradient(90deg,var(--ok) 0,var(--ok) 8px,var(--sheet) 8px,var(--sheet) 10px); }
+.gba-xp-compact { max-width: 20rem; font-size: .8rem; }
+.growth-header { margin-top: .25rem; min-width: 0; }
+.gba-sprite { display: block; flex-shrink: 0; image-rendering: pixelated; }
+.gba-idle { animation: gba-bob 1.8s steps(2,end) infinite; }
+.gba-evolution { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 1rem; background: var(--paper); overflow: auto; }
+.gba-evolution-content { width: min(100%,34rem); display: grid; gap: 1rem; }
+.gba-evolution-close { justify-self: end; }
+.gba-evolution-art { display: grid; place-items: center; position: relative; }
+.gba-evolution-art::after { content: ""; position: absolute; inset: 0; background: white; pointer-events: none; animation: gba-flash .6s steps(3,end) forwards; }
+.gba-dex-summary { display: grid; gap: .6rem; margin-bottom: 1.5rem; }
+.gba-dex h1, .gba-dex h2 { font-family: var(--gba-font); }
+.gba-dex-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(min(100%,210px),1fr)); gap: 1rem; }
+.gba-dex-entry { display: grid; align-content: start; gap: .6rem; padding: 1rem; border: 2px solid var(--rule-strong); background: var(--sheet); overflow-wrap: anywhere; }
+.gba-dex-entry h2 { font-size: 1.25rem; }
+.gba-dex-mark { color: var(--ok); font-size: 1.5rem; }
+.gba-dex-unknown { color: var(--ink); text-decoration: none; background: var(--paper-2); }
+.gba-dex-unknown .gba-sprite { color: var(--ink-2); }
+.gba-dex-unknown:hover { border-color: var(--action); }
+.gba-dex-unknown > span { color: var(--action); font-size: .85rem; text-decoration: underline; text-underline-offset: 3px; }
+[data-gba="on"] { --gba-border: var(--ink); }
+[data-gba="on"] .chat-head, [data-gba="on"] .bubble, [data-gba="on"] .brand, [data-gba="on"] .growth-header { font-family: var(--gba-font); }
+[data-gba="on"] .chat-head { border-radius: 0; border-bottom: 3px solid var(--gba-border); }
+[data-gba="on"] .bubble { border-radius: 0; border: 2px solid var(--gba-border); box-shadow: 3px 3px 0 var(--rule-strong); }
+[data-gba="on"] .gba-xp-label { font-size: .95rem; }
+@keyframes gba-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes gba-blink { 50% { visibility: hidden; } }
+@keyframes gba-flash { from { opacity: 1; } to { opacity: 0; } }
+@media (max-width:700px) { .growth-header { width: min(100%,15rem); } .gba-xp-compact { gap: .2rem; } .gba-evolution-content { gap: .75rem; } }
+@media (prefers-reduced-motion:reduce) { .gba-idle,.gba-next { animation: none; } .gba-evolution-art::after { display: none; } }
+.gba-training h1,.gba-training h2 { font-family: var(--gba-font); }
+.gba-training-results { padding: 1.25rem; border: 3px solid var(--ink); background: var(--sheet); display: grid; gap: 1rem; margin-bottom: 2rem; }
+.gba-training-score { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-variant-numeric: tabular-nums; }
+.gba-training-results .gba-xp-track i { transition: transform 900ms cubic-bezier(.16,1,.3,1); }
+.gba-review,.gba-medals { margin-top: 2.5rem; }
+.gba-review > h2,.gba-medals > h2 { margin-bottom: .5rem; }
+.gba-draft { display: grid; gap: 1rem; padding-block: 1.5rem; border-bottom: 1px solid var(--rule-strong); }
+.gba-draft h3 { margin: 0; }
+.gba-medal-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; margin-top: 1rem; }
+.gba-medal { display: grid; align-content: start; justify-items: center; gap: .4rem; text-align: center; padding: .8rem; background: var(--sheet); border: 2px solid var(--rule-strong); overflow-wrap: anywhere; }
+.gba-medal h3 { font-family: var(--gba-font); font-size: 1.15rem; }
+.gba-medal p { font-size: .8rem; color: var(--ink-2); }
+.gba-medal strong { font-size: .8rem; font-variant-numeric: tabular-nums; }
+.gba-medal-icon { width: 32px; height: 40px; color: var(--ok); }
+.gba-medal-icon.locked { color: var(--ink-2); }
+.gba-variant-scroll { overflow-x: auto; }
+.gba-variants { width: 100%; text-align: left; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.gba-variants caption { text-align: left; padding-block: 1rem; color: var(--ink-2); }
+.gba-variants th,.gba-variants td { padding: .8rem; border-bottom: 1px solid var(--rule-strong); }
+.gba-session-history { padding-left: 1.25rem; }
+.gba-session-history li { margin-block: 1rem; }
+.gba-ticket-notes { margin-top: 1rem; display: grid; gap: .6rem; }
+.gba-ticket-notes .btn { justify-self: start; }
+@media(max-width:700px) { .gba-medal-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: .6rem; } .gba-training-results { padding: .8rem; } .gba-training .actions { flex-wrap: wrap; } .gba-training-score { flex-direction: column; gap: .4rem; } }
+@media(prefers-reduced-motion:reduce) { .gba-training-results .gba-xp-track i { transition: none; } }
+
+
+/* Pulido: respuestas del bot en la misma tipografía, nombres de tema con mayúscula, sin frase del mascota sobre el cuadro GBA */
+[data-gba="on"] .bubble.bot p, [data-gba="on"] .bubble.bot li { font-family: inherit; }
+[data-gba="on"] .say { display: none; }
+.gba-dex-entry h2:not(:only-child) { text-transform: capitalize; }
+.gba-training-results .note > span { display: block; }

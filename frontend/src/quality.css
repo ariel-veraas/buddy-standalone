@@ -1,0 +1,17 @@
+.honesty-bar { display: flex; height: .9rem; border-radius: 99px; overflow: hidden; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--rule-strong); }
+.honesty-bar i { display: block; height: 100%; transition: width .6s cubic-bezier(.2, .8, .2, 1); }
+.honesty-bar .ok { background: var(--ok); } .honesty-bar .doubt { background: var(--doubt); } .honesty-bar .bad { background: var(--danger); }
+.tone-ok { color: var(--ok); } .tone-doubt { color: var(--doubt); } .tone-bad { color: var(--danger); }
+.figure span { max-width: 17rem; display: block; }
+
+.gap-list, .case-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.gap { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; padding: 1rem 0; border-top: 1px solid var(--rule); }
+.gap:first-child { border-top: 0; }
+.gap-main { flex: 1 1 22rem; min-width: 0; display: flex; flex-direction: column; gap: .4rem; }
+.gap h3 { text-transform: capitalize; }
+.examples { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: .92rem; }
+.case-list li { display: flex; align-items: center; gap: .75rem; padding: .6rem 0; border-top: 1px solid var(--rule); flex-wrap: wrap; }
+.case-list li:first-child { border-top: 0; }
+.case-form { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) auto; gap: .75rem; align-items: end; }
+.history ul { list-style: none; margin: .4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; font-size: .92rem; }
+@media (max-width: 700px) { .case-form { grid-template-columns: minmax(0, 1fr); } }

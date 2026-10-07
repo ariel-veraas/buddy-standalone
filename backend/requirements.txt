@@ -1,0 +1,11 @@
+fastapi==0.142.3
+uvicorn[standard]==0.54.0
+SQLAlchemy==2.1.4
+psycopg[binary]==3.3.6
+pydantic==2.13.5
+python-multipart==0.0.32
+argon2-cffi==25.1.0
+cryptography==50.0.2
+PyJWT==2.15.1
+pypdf==6.19.0
+requests==2.34.2

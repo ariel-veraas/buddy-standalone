@@ -1,0 +1,23 @@
+# secretos y datos locales
+.env
+backend/data/
+backend/.dev-data/
+backend/.test-data/
+# dependencias y compilados
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/static/
+.claude/
+# notas internas de trabajo
+PROYECTO.md
+work/
+.codex-*
+.env.*
+!.env.example
+frontend/dist/
+*.log
+.DS_Store
+publicar/

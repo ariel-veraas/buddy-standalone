@@ -1,0 +1,43 @@
+# Buddy: asistente que responde con los documentos de tu empresa.
+#   1) cp .env.example .env      (opcional: cambiá el puerto)
+#   2) docker compose up -d
+#   3) abrí http://localhost:8080 y creá tu cuenta de administrador
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: buddy
+      POSTGRES_DB: buddy
+      POSTGRES_PASSWORD: ${BUDDY_DB_PASSWORD:-buddy-local-only}
+    volumes:
+      - buddy-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U buddy -d buddy"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    # La base NO se publica hacia afuera: solo la ve la aplicación.
+
+  app:
+    build: .
+    image: buddy-standalone:local
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://buddy:${BUDDY_DB_PASSWORD:-buddy-local-only}@db:5432/buddy
+      BUDDY_COOKIE_SECURE: ${BUDDY_COOKIE_SECURE:-auto}
+      BUDDY_MAX_UPLOAD_MB: ${BUDDY_MAX_UPLOAD_MB:-25}
+      BUDDY_SETUP_TOKEN: ${BUDDY_SETUP_TOKEN:-}
+      # IPs de tu proxy inverso (HTTPS), separadas por coma. Solo ellas pueden decir cuál es la IP real de cada persona.
+      FORWARDED_ALLOW_IPS: ${BUDDY_TRUSTED_PROXIES:-127.0.0.1}
+    volumes:
+      - buddy-data:/data
+    ports:
+      - "${BUDDY_PORT:-8080}:8080"
+
+volumes:
+  buddy-db:
+  buddy-data:
